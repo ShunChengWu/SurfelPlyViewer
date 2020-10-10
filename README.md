@@ -1,4 +1,9 @@
 # SurfelPlyViewer
+![RGB](main/img/rgb.png)
+![Normal](main/img/normal.png)
+![Label](main/img/label.png)
+
+# Ply file format 
 The target ply file should save surfel properties to:
 ```
 property float x
@@ -23,3 +28,14 @@ Eigen3
 ```
 mkdir build; cd build; cmake ..; make;
 ```
+
+# Control 
+Mouse left button: rotation  
+Mouse right button: height adjustment   
+Mouse scroll: distance to the object  
+Mouse scroll button: translation  
+
+# hotkey
+Esc: exit  
+c: show grid  
+
