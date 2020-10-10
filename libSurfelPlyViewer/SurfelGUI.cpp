@@ -7,7 +7,7 @@
 using namespace PSLAM;
 
 SurfelGUI::SurfelGUI(const std::string &path)
-        : SC::GUI3D("Graph SLAM GUI", 1280, 800)
+        : SC::GUI3D("Surfel Ply Viewer", 1280, 800)
 {
     registerKeyFunciton(window_, GLFW_KEY_ESCAPE,
                         [&]() {
