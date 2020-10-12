@@ -15,6 +15,7 @@ SurfelGUI::SurfelGUI(const std::string &path)
                         });
 
     if (!path.empty()) selected_path = path;
+    selected_path.copy(text_buffer,selected_path.length());
     mSurfelDrawer.Init(std::bind(&SurfelGUI::GetSurfelColor,this,std::placeholders::_1,std::placeholders::_2));
     generateList(labelColorList, 5096);
 
@@ -50,7 +51,6 @@ void SurfelGUI::MainUI(){
     }
 //    ImGui::Text("Selected Path");
 //    ImGui::Text("%s", selected_path.c_str());
-    static char text_buffer[1024];
     if(ImGui::InputText("path",text_buffer,IM_ARRAYSIZE(text_buffer))) selected_path = text_buffer;
     if (ImGui::Button("Open File Dialog"))
         ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", "Choose File", ".ply\0\0", selected_path,0);

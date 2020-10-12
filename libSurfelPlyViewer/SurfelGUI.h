@@ -32,6 +32,7 @@ namespace PSLAM {
         std::vector<color> labelColorList;
         std::vector<std::shared_ptr<Surfel>> surfels;
         std::string selected_path="./";
+        char text_buffer[1024];
         int mColorType = COLOR_LABEL;
         int mItemCurrent = 0;
         SurfelDrawer mSurfelDrawer;

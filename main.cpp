@@ -1,6 +1,8 @@
 #include "libSurfelPlyViewer/SurfelGUI.h"
-
-int main(){
-    PSLAM::SurfelGUI gui;
+#include <string>
+int main(int argc, char** argv){
+    std::string path="./";
+    if(argc>1) path = argv[1];
+    PSLAM::SurfelGUI gui(path);
     gui.run();
 }
