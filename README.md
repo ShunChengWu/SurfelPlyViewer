@@ -1,7 +1,5 @@
 # SurfelPlyViewer
-![RGB](main/img/rgb.png)
-![Normal](main/img/normal.png)
-![Label](main/img/label.png)
+![demo](https://github.com/ShunChengWu/SurfelPlyViewer/blob/main/demo.png)
 
 # Ply file format 
 The target ply file should save surfel properties to:
