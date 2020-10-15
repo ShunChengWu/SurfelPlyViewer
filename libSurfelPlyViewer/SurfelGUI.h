@@ -48,6 +48,7 @@ namespace PSLAM {
 
         void generateList(std::vector<color> &labelColorList, size_t size);
         void scale_cloud();
+        void scale_radius();
 
         void GetSurfelColor(Eigen::Vector3f& surfel_color, const Surfel *surfel) const{
             switch (mColorType) {

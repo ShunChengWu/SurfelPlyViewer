@@ -114,13 +114,21 @@ namespace Util {
         copyFromBuffer(radius_data.get(), &radius);
 
         std::vector<std::shared_ptr<Surfel>> surfels(points.size());
+        Eigen::Vector3f centroid = {0.f,0.f,0.f};
         for(size_t i=0;i<points.size();++i ){
             surfels[i].reset(new Surfel());
             auto& surfel = surfels[i];
-
-            surfel->pos.x() = points[i].x*1000;
-            surfel->pos.y() = points[i].y*1000;
-            surfel->pos.z() = points[i].z*1000;
+            if (std::isnan(points[i].x) || std::isnan(points[i].y) || std::isnan(points[i].z)) {
+                printf("has nan\n");
+                surfel->pos.setZero();
+                surfel->is_valid = false;
+                surfel->is_stable = false;
+            } else {
+                surfel->pos.x() = points[i].x;
+                surfel->pos.y() = points[i].y;
+                surfel->pos.z() = points[i].z;
+                centroid += surfel->pos;
+            }
 
             if(colors.size() == points.size()){
                 surfel->color[2] = colors[i].x;
@@ -144,6 +152,9 @@ namespace Util {
             surfel->is_valid = true;
             surfel->is_stable = true;
         }
+        centroid /= points.size();
+        for(size_t i=0;i<points.size();++i )
+            surfels[i]->pos -= centroid;
 
         return surfels;
     }

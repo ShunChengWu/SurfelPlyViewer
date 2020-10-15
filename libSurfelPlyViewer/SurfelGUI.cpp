@@ -43,6 +43,12 @@ void SurfelGUI::scale_cloud() {
     }
 }
 
+void SurfelGUI::scale_radius() {
+    for(auto &surfel:surfels){
+        surfel->radius *= scale;
+    }
+}
+
 #include <ImGuiFileDialog.h>
 void SurfelGUI::MainUI(){
     if(!ImGui::Begin("Control Panel",nullptr, ImGuiWindowFlags_MenuBar)){
@@ -89,8 +95,14 @@ void SurfelGUI::MainUI(){
     if(ImGui::InputFloat("scale value",&scale)){
 
     }
-    if(ImGui::Button("scale") ) {
+    if(ImGui::Button("point scale") ) {
+        printf("scale pts by %f\n", scale);
         scale_cloud();
+        bNeedUpdate=true;
+    }
+    if(ImGui::Button("radius scale") ) {
+        printf("scale radius by %f\n", scale);
+        scale_radius();
         bNeedUpdate=true;
     }
 
