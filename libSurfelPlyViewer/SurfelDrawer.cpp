@@ -43,7 +43,7 @@ void SurfelDrawer::Init(std::function<void(Eigen::Vector3f&, const Surfel*)> get
                                  "void main() {\n"
                                  "    v_surfel_coord = vec2(2.0 * texture - 1.0)\n;"
                                  "    vec4 normalV = model_view_projection * vec4(normal, 0);"
-                                 "    vec3 test = vec3(0.5, 0.5, 1);"
+                                 "    vec3 test = vec3(0.0, 0.0, 1);"
                                  "    float diffuse = abs(dot(normalV.xyz, normalize(test)));" //
                                  "    vec3 color2 = color;"
                                  "    color2 *= diffuse;"
