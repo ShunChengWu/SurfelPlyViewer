@@ -18,6 +18,8 @@ namespace PSLAM {
 
         void Update(const std::vector<std::shared_ptr<Surfel>>& surfels);
         void Draw(const Eigen::Matrix4f& projection, const Eigen::Matrix4f& viewMatrix);
+
+        float mDiffuseStength=0.5f;
     private:
         bool bInited=false;
         std::function<void(Eigen::Vector3f&, const Surfel*)> pGetColor = nullptr;

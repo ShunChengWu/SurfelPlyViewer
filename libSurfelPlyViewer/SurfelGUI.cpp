@@ -95,6 +95,9 @@ void SurfelGUI::MainUI(){
     if(ImGui::InputFloat("scale value",&scale)){
 
     }
+    ImGui::DragFloat("diffuse strength",&mSurfelDrawer.mDiffuseStength,0.01,0.f,1.f);
+
+
     if(ImGui::Button("point scale") ) {
         printf("scale pts by %f\n", scale);
         scale_cloud();
