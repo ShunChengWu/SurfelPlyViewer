@@ -2,7 +2,7 @@ SET(targetname libSurfelPlyViewer)
 SET(sources
         SurfelGUI.cpp
         SurfelDrawer.cpp
-        ImGuiExtension.cpp
+#        ImGuiExtension.cpp
         )
 SET(headers
         SurfelGUI.h

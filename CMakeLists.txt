@@ -20,18 +20,19 @@ set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/libGUI3D/cmake ${CMAKE_MODULE_PATH})
 #INCLUDE(${PROJECT_SOURCE_DIR}/cmake/UseJson.cmake)
 INCLUDE(${PROJECT_SOURCE_DIR}/cmake/UseTinyPLY.cmake)
 INCLUDE(${PROJECT_SOURCE_DIR}/libGUI3D/cmake/UseCxxTools.cmake)
+INCLUDE_DIRECTORIES(libGUI3D/libGUI3D/include)
+
+######################
+# Add subdirectories #
+######################
 
 
 ######################
 # Add subdirectories #
 ######################
-
-
-######################
-# Add subdirectories #
-######################
-ADD_SUBDIRECTORY(libGUI3D/libGUI)
-ADD_SUBDIRECTORY(libGUI3D/libGUI3D)
+ADD_SUBDIRECTORY(libGUI3D)
+#ADD_SUBDIRECTORY(libGUI3D/libGUI)
+#ADD_SUBDIRECTORY(libGUI3D/libGUI3D)
 
 ADD_SUBDIRECTORY(libSurfelPlyViewer)
 

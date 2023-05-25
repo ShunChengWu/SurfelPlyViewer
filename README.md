@@ -14,7 +14,8 @@ property float nz
 property uchar red
 property uchar green
 property uchar blue
-[optional] property float radius
+property float quality
+property float radius
 ```
 RGB and normal values are optional. 
 

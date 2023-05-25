@@ -3,7 +3,8 @@
 //
 
 #include "SurfelGUI.h"
-#include "ImGuiExtension.h"
+#include <ImGuiExtension/LocalFileSystem.h>
+//#include "ImGuiExtension.h"
 using namespace PSLAM;
 
 SurfelGUI::SurfelGUI(const std::string &path)
@@ -49,7 +50,6 @@ void SurfelGUI::scale_radius() {
     }
 }
 
-#include <ImGuiFileDialog.h>
 void SurfelGUI::MainUI(){
     if(!ImGui::Begin("Control Panel",nullptr, ImGuiWindowFlags_MenuBar)){
         ImGui::End();
@@ -58,31 +58,40 @@ void SurfelGUI::MainUI(){
 //    ImGui::Text("Selected Path");
 //    ImGui::Text("%s", selected_path.c_str());
     if(ImGui::InputText("path",text_buffer,IM_ARRAYSIZE(text_buffer))) selected_path = text_buffer;
-    if (ImGui::Button("Open File Dialog"))
-        ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", "Choose File", ".ply\0\0", selected_path,0);
-    if (ImGuiFileDialog::Instance()->FileDialog("ChooseFileDlgKey"))
-    {
-        // action if OK
-        if (ImGuiFileDialog::Instance()->IsOk)
-        {
-            std::string fileName = ImGuiFileDialog::Instance()->GetCurrentFileName();
-            std::string filePathName = ImGuiFileDialog::Instance()->GetFilepathName();
-            std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
-            auto selections = ImGuiFileDialog::Instance()->GetSelection();
-            // action
-//            printf("Selected file:\n");
-//            printf("%s\n%s\n%s\n", fileName.c_str(), filePathName.c_str(), filePath.c_str());
-//            printf("Selected files:\n");
-            for(auto v : selections) {
-                selected_path = v.second;
-                break;
-            }
-            selected_path.copy(text_buffer,selected_path.length());
-            printf("select path: %s\n", selected_path.c_str());
-        }
-        // close
-        ImGuiFileDialog::Instance()->CloseDialog("ChooseFileDlgKey");
+
+//    constexpr size_t kFilenameBufSize = 512;
+//    static char name_buf[kFilenameBufSize];
+    if (ImGui::FileSelectButton("select_file",text_buffer,buffer_size)) {
+        selected_path = text_buffer;
+//        printf("%s\n",name_buf);
+//        selected_path = std::string(name_buf);
     }
+
+//    if (ImGui::Button("Open File Dialog"))
+//        ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", "Choose File", ".ply\0\0", selected_path,0);
+//    if (ImGuiFileDialog::Instance()->FileDialog("ChooseFileDlgKey"))
+//    {
+//        // action if OK
+//        if (ImGuiFileDialog::Instance()->IsOk)
+//        {
+//            std::string fileName = ImGuiFileDialog::Instance()->GetCurrentFileName();
+//            std::string filePathName = ImGuiFileDialog::Instance()->GetFilepathName();
+//            std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
+//            auto selections = ImGuiFileDialog::Instance()->GetSelection();
+//            // action
+////            printf("Selected file:\n");
+////            printf("%s\n%s\n%s\n", fileName.c_str(), filePathName.c_str(), filePath.c_str());
+////            printf("Selected files:\n");
+//            for(auto v : selections) {
+//                selected_path = v.second;
+//                break;
+//            }
+//            selected_path.copy(text_buffer,selected_path.length());
+//            printf("select path: %s\n", selected_path.c_str());
+//        }
+//        // close
+//        ImGuiFileDialog::Instance()->CloseDialog("ChooseFileDlgKey");
+//    }
 
 
     if(ImGui::Button("Load")){

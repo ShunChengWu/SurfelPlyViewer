@@ -5,7 +5,7 @@
 #ifndef GRAPHSLAM_SURFELGUI_H
 #define GRAPHSLAM_SURFELGUI_H
 #include "surfel.h"
-#include "../libGUI3D/libGUI3D/GUI3D.h"
+#include <GUI3D/GUI3D.h>
 #include "eigen_glm.h"
 #include "SurfelDrawer.h"
 #include <random>
@@ -32,7 +32,8 @@ namespace PSLAM {
         std::vector<color> labelColorList;
         std::vector<std::shared_ptr<Surfel>> surfels;
         std::string selected_path="./";
-        char text_buffer[1024];
+        static const size_t buffer_size = 1024;
+        char text_buffer[buffer_size];
         int mColorType = COLOR_LABEL;
         int mItemCurrent = 0;
         SurfelDrawer mSurfelDrawer;

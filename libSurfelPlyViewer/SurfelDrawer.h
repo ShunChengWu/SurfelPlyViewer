@@ -6,7 +6,7 @@
 #include <memory>
 #include <set>
 #include "surfel.h"
-#include "../libGUI3D/libGUI3D/glShader.hpp"
+#include <GUI3D/glShader.hpp>
 
 namespace PSLAM {
     class SurfelDrawer {

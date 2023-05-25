@@ -46,7 +46,6 @@ namespace Util {
     }
 
     static std::vector<std::shared_ptr<Surfel>> load_cloud(const std::string &path) {
-//    auto dim_pts = 3;
         std::unique_ptr <std::istream> file_stream;
         // try to load with binary
         std::vector <uint8_t> byte_buffer;
